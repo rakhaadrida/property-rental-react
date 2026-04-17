@@ -1,10 +1,10 @@
 @import "mixins/banner";
 @include bsBanner("");
 
-
 // scss-docs-start import-stack
 // Configuration
 @import "functions";
+
 @import "variables";
 @import "variables-dark";
 @import "maps";
@@ -50,3 +50,18 @@
 // Utilities
 @import "utilities/api";
 // scss-docs-end import-stack
+
+.text-gray-900 {
+  color: $gray-900;
+}
+
+.brand-text-icon {
+  font-family: "Poppins", sans-serif;
+  font-style: Medium;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 39px;
+  letter-spacing: 0%;
+  text-align: left;
+  color: $primary;
+}

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
 interface ButtonProps {
-  type: "button" | "link";
-  children: React.ReactNode;
-  onClick: () => void;
+  type?: "button" | "link";
+  children?: React.ReactNode;
+  onClick?: () => void;
   href: string;
-  target: string;
+  target?: string;
   className?: string;
   style?: React.CSSProperties;
   isPrimary?: boolean;
