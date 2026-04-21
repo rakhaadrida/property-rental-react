@@ -1,12 +1,12 @@
 import "./assets/scss/style.scss";
-import Brand from "./components/brand/Brand";
+import { Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
-    <>
-      <div className="App">Hello World!</div>
-      <Brand />
-    </>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+    </Routes>
   );
 }
 
