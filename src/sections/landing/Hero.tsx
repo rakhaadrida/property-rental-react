@@ -1,8 +1,8 @@
-import HeroImage from "../../assets/images/landing-page/hero.jpg";
-import HeroImageFrame from "../../assets/images/landing-page/hero-frame.jpg";
-import IconCities from "../../assets/icons/icon_cities.svg";
-import IconTravelers from "../../assets/icons/icon_traveler.svg";
-import IconTreasures from "../../assets/icons/icon_treasure.svg";
+import HeroImage from "../../../public/assets/images/landing-page/hero.jpg";
+import HeroImageFrame from "../../../public/assets/images/landing-page/hero-frame.jpg";
+import IconCities from "../../../public/assets/icons/icon_cities.svg";
+import IconTravelers from "../../../public/assets/icons/icon_traveler.svg";
+import IconTreasures from "../../../public/assets/icons/icon_treasure.svg";
 import Button from "../../components/button/Button";
 import { numberFormat } from "../../utils/NumberFormat";
 
@@ -10,14 +10,14 @@ interface HeroProps {
   travelers: number;
   treasures: number;
   cities: number;
-  refMostPicked?: React.RefObject<HTMLDivElement>;
+  refMostPicked: React.RefObject<HTMLDivElement | null>;
 }
 
 const Hero = (props: HeroProps) => {
   function showMostPicked() {
     window.scrollTo({
-      top: props.refMostPicked
-        ? props.refMostPicked?.current?.offsetTop - 30
+      top: props.refMostPicked.current
+        ? props.refMostPicked.current?.offsetTop - 30
         : 0,
       behavior: "smooth",
     });
