@@ -4,6 +4,7 @@ import MostPicked from "../sections/landing/MostPicked";
 import LandingPageSpecs from "../../specs/landingPage.json";
 import { useRef } from "react";
 import Categories from "../sections/landing/Categories";
+import Testimonial from "../sections/landing/Testimonial";
 
 const LandingPage = () => {
   const refMostPicked = useRef<HTMLDivElement>(null);
@@ -22,6 +23,7 @@ const LandingPage = () => {
         refMostPicked={refMostPicked}
       />
       <Categories data={LandingPageSpecs.categories} />
+      <Testimonial data={LandingPageSpecs.testimonial} />
     </>
   );
 };

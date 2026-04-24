@@ -3,6 +3,7 @@
 
 // scss-docs-start import-stack
 // Configuration
+@import "color-variables";
 @import "functions";
 
 @import "variables";
@@ -290,5 +291,46 @@ section {
 
   .category-image {
     height: 180px;
+  }
+}
+
+.testimonial-hero-section {
+  margin-top: 30px;
+  margin-right: 57px;
+
+  .testimonial-hero {
+    margin: 30px 0 0 30px;
+  }
+
+  .testimonial-hero,
+  .testimonial-hero img {
+    width: 365px;
+    height: 500px;
+  }
+
+  .testimonial-image {
+    z-index: 1;
+  }
+
+  .testimonial-frame {
+    margin: -30px 0 0 -30px;
+  }
+}
+
+.testimonial-content {
+  margin-top: 10px;
+  width: 612px;
+
+  .testimonial-name {
+    margin-bottom: 40px;
+  }
+
+  .testimonial-button {
+    height: 50px;
+    line-height: 170%;
+    font-size: 18px;
+    margin-top: 50px;
+    padding: 9px 27px 10px 27px;
+    font-weight: 400;
   }
 }
