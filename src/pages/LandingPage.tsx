@@ -3,6 +3,7 @@ import Hero from "../sections/landing/Hero";
 import MostPicked from "../sections/landing/MostPicked";
 import LandingPageSpecs from "../../specs/landingPage.json";
 import { useRef } from "react";
+import Categories from "../sections/landing/Categories";
 
 const LandingPage = () => {
   const refMostPicked = useRef<HTMLDivElement>(null);
@@ -20,6 +21,7 @@ const LandingPage = () => {
         data={LandingPageSpecs.mostPicked}
         refMostPicked={refMostPicked}
       />
+      <Categories data={LandingPageSpecs.categories} />
     </>
   );
 };
