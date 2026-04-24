@@ -1,4 +1,5 @@
 import Button from "../../components/button/Button";
+import { getImageSrc } from "../../utils/GetImage";
 
 interface CategoryItem {
   _id: string;
@@ -45,9 +46,9 @@ const Categories = (props: CategoryProps) => {
                         <span className="font-weight-light">Choice</span>
                       </div>
                     )}
-                    <figure className="img-wrapper" style={{ height: 180 }}>
+                    <figure className="img-wrapper category-image">
                       <img
-                        src={item.imageUrl}
+                        src={getImageSrc(item.imageUrl)}
                         alt={item.name}
                         className="img-cover"
                       />
