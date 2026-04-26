@@ -44,7 +44,7 @@ const Star = ({
     star.push(
       <div
         className="star"
-        key={`star-${starIndex}`}
+        key={`starDescimals`}
         style={{
           left: leftPos,
           height: height,
