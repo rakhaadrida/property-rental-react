@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import Button from "../../components/button/Button";
 import { getImageSrc } from "../../utils/GetImage";
 
@@ -24,55 +25,59 @@ const Categories = (props: CategoryProps) => {
   return props.data.map((category, index) => {
     return (
       <section className="container" key={`category-${index}`}>
-        <h4 className="mb-4 font-weight-medium">{category.name}</h4>
-        <div className="container-grid">
-          {category.items.length === 0 ? (
-            <div className="row">
-              <div className="col-auto align-items-center">
-                There is no property at this category
-              </div>
-            </div>
-          ) : (
-            category.items.map((item, itemIndex) => {
-              return (
-                <div
-                  className="item column-3 row-1"
-                  key={`category-${index}-item-${itemIndex}`}
-                >
-                  <div className="card category-card">
-                    {item.isPopular && (
-                      <div className="tag">
-                        Popular{" "}
-                        <span className="font-weight-light">Choice</span>
-                      </div>
-                    )}
-                    <figure className="img-wrapper category-image">
-                      <img
-                        src={getImageSrc(item.imageUrl)}
-                        alt={item.name}
-                        className="img-cover"
-                      />
-                    </figure>
-                    <div className="meta-wrapper">
-                      <Button
-                        type="link"
-                        href={`/properties/${item._id}`}
-                        className="stretched-link d-block text-gray-800"
-                      >
-                        <h5 className="h4 text-gray-900 font-weight-regular">
-                          {item.name}
-                        </h5>
-                      </Button>
-                      <span className="text-gray-500 font-weight-light">
-                        {item.city}, {item.country}
-                      </span>
-                    </div>
-                  </div>
+        <Fade direction="up">
+          <h4 className="mb-4 font-weight-medium">{category.name}</h4>
+          <div className="container-grid">
+            {category.items.length === 0 ? (
+              <div className="row">
+                <div className="col-auto align-items-center">
+                  There is no property at this category
                 </div>
-              );
-            })
-          )}
-        </div>
+              </div>
+            ) : (
+              category.items.map((item, itemIndex) => {
+                return (
+                  <div
+                    className="item column-3 row-1"
+                    key={`category-${index}-item-${itemIndex}`}
+                  >
+                    <Fade direction="up" delay={200 * itemIndex} triggerOnce>
+                      <div className="card category-card">
+                        {item.isPopular && (
+                          <div className="tag">
+                            Popular{" "}
+                            <span className="font-weight-light">Choice</span>
+                          </div>
+                        )}
+                        <figure className="img-wrapper category-image">
+                          <img
+                            src={getImageSrc(item.imageUrl)}
+                            alt={item.name}
+                            className="img-cover"
+                          />
+                        </figure>
+                        <div className="meta-wrapper">
+                          <Button
+                            type="link"
+                            href={`/properties/${item._id}`}
+                            className="stretched-link d-block text-gray-800"
+                          >
+                            <h5 className="h4 text-gray-900 font-weight-regular">
+                              {item.name}
+                            </h5>
+                          </Button>
+                          <span className="text-gray-500 font-weight-light">
+                            {item.city}, {item.country}
+                          </span>
+                        </div>
+                      </div>
+                    </Fade>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </Fade>
       </section>
     );
   });

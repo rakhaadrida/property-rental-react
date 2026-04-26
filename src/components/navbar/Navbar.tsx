@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import Brand from "../brand/Brand";
 import Button from "../button/Button";
 import { useLocation } from "react-router-dom";
@@ -10,37 +11,39 @@ const Navbar = () => {
   };
 
   return (
-    <header className="spacing-sm">
-      <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light">
-          <Brand />
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav ms-auto">
-              <li className={`nav-item${getNavLinkClass("/")}`}>
-                <Button className="nav-link" href="/" type="link">
-                  Home
-                </Button>
-              </li>
-              <li className={`nav-item${getNavLinkClass("/browse-by")}`}>
-                <Button className="nav-link" href="/browse-by" type="link">
-                  Browse By
-                </Button>
-              </li>
-              <li className={`nav-item${getNavLinkClass("/stories")}`}>
-                <Button className="nav-link" href="/stories" type="link">
-                  Stories
-                </Button>
-              </li>
-              <li className={`nav-item${getNavLinkClass("/agents")}`}>
-                <Button className="nav-link" href="/agents" type="link">
-                  Agents
-                </Button>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </header>
+    <Fade>
+      <header className="spacing-sm">
+        <div className="container">
+          <nav className="navbar navbar-expand-lg navbar-light">
+            <Brand />
+            <div className="collapse navbar-collapse">
+              <ul className="navbar-nav ms-auto">
+                <li className={`nav-item${getNavLinkClass("/")}`}>
+                  <Button className="nav-link" href="/" type="link">
+                    Home
+                  </Button>
+                </li>
+                <li className={`nav-item${getNavLinkClass("/browse-by")}`}>
+                  <Button className="nav-link" href="/browse-by" type="link">
+                    Browse By
+                  </Button>
+                </li>
+                <li className={`nav-item${getNavLinkClass("/stories")}`}>
+                  <Button className="nav-link" href="/stories" type="link">
+                    Stories
+                  </Button>
+                </li>
+                <li className={`nav-item${getNavLinkClass("/agents")}`}>
+                  <Button className="nav-link" href="/agents" type="link">
+                    Agents
+                  </Button>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+    </Fade>
   );
 };
 

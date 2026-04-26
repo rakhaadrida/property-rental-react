@@ -167,6 +167,11 @@ section {
   }
 }
 
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 .card {
   height: 100%;
 
@@ -234,11 +239,7 @@ section {
     .img-wrapper {
       z-index: 1;
       margin: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       transform: scale(1.1);
       transition: 0.25s transform ease-in-out;
     }
@@ -332,5 +333,60 @@ section {
     margin-top: 50px;
     padding: 9px 27px 10px 27px;
     font-weight: 400;
+  }
+}
+
+footer {
+  border-top: 1px solid $gray-200;
+  padding-top: 50px;
+
+  .brand-section {
+    width: 375px;
+
+    .brand-tagline {
+      font-weight: 300;
+      color: $gray-500;
+      margin-top: 10px;
+      line-height: 24px;
+      width: 300px;
+    }
+  }
+
+  .footer-item {
+    margin-right: 4rem;
+  }
+
+  h6 {
+    font-size: 18px;
+  }
+
+  .list-group-flush {
+    margin-top: 20px;
+  }
+
+  .list-group-item {
+    padding: 0.3125rem 0;
+    border: 0;
+
+    a,
+    span {
+      color: $gray-500;
+      font-weight: 300;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        color: $gray-800;
+      }
+    }
+  }
+
+  .copyrights {
+    margin: 50px 0;
+    font-weight: 300;
+    color: $gray-500;
   }
 }
