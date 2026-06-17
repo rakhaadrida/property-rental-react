@@ -1,10 +1,9 @@
-import "./property-detail.css";
-import DetailNavbar from "../sections/detail/DetailNavbar";
+import Navbar from "../components/navbar/Navbar";
+import Footer from "../components/footer/Footer";
 import DetailHeader from "../sections/detail/DetailHeader";
 import AboutBooking from "../sections/detail/AboutBooking";
 import Activities from "../sections/detail/Activities";
 import DetailTestimonial from "../sections/detail/DetailTestimonial";
-import DetailFooter from "../sections/detail/DetailFooter";
 
 const property = {
   name: "Village Angga",
@@ -68,26 +67,24 @@ const property = {
 
 const PropertyDetail = () => {
   return (
-    <div className="detail-page tw:min-h-screen tw:bg-white tw:font-sans tw:text-ink tw:antialiased">
-      <DetailNavbar />
-      <main>
-        <DetailHeader
-          name={property.name}
-          city={property.city}
-          country={property.country}
-          images={property.images}
-        />
-        <AboutBooking
-          description={property.description}
-          features={property.features}
-          price={property.price}
-          unit={property.unit}
-        />
-        <Activities data={property.activities} />
-        <DetailTestimonial data={property.testimonial} />
-      </main>
-      <DetailFooter />
-    </div>
+    <>
+      <Navbar />
+      <DetailHeader
+        name={property.name}
+        city={property.city}
+        country={property.country}
+        images={property.images}
+      />
+      <AboutBooking
+        description={property.description}
+        features={property.features}
+        price={property.price}
+        unit={property.unit}
+      />
+      <Activities data={property.activities} />
+      <DetailTestimonial data={property.testimonial} />
+      <Footer />
+    </>
   );
 };
 

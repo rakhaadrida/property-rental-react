@@ -78,7 +78,148 @@ h1,
   font-weight: 300;
 }
 
-.brand-text-icon {
+.font-weight-medium {
+  font-weight: 500;
+}
+
+// Details page
+.detail-header {
+  .detail-title-row {
+    margin-bottom: 30px;
+  }
+
+  .detail-breadcrumb {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .detail-title {
+    text-align: center;
+  }
+
+  .detail-title-spacer {
+    visibility: hidden;
+  }
+}
+
+.detail-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+
+  .img-wrapper {
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+
+  .gallery-main {
+    height: 450px;
+  }
+
+  .gallery-side {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;
+
+    .img-wrapper {
+      height: 210px;
+    }
+  }
+}
+
+.about-booking {
+  .row {
+    align-items: flex-start;
+  }
+
+  .about-section {
+    max-width: 555px;
+    padding-right: 40px;
+  }
+
+  .about-description {
+    line-height: 170%;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 30px;
+    column-gap: 20px;
+    margin-top: 40px;
+
+    .feature-label {
+      font-size: 0.938rem;
+    }
+  }
+
+  .booking-section {
+    width: 450px;
+  }
+
+  .booking-card {
+    border: 1px solid $gray-200;
+    border-radius: 15px;
+    padding: 40px;
+    height: auto;
+
+    .booking-price {
+      color: $teal;
+      font-size: 2rem;
+    }
+
+    .pick-date {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background-color: $gray-100;
+      border-radius: 4px;
+      padding: 8px 10px;
+
+      .pick-date-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        background-color: $indigo;
+        color: $white;
+        flex-shrink: 0;
+      }
+    }
+
+    .booking-total {
+      font-size: 0.938rem;
+    }
+
+    .booking-button {
+      margin-top: 8px;
+      height: 50px;
+      line-height: 170%;
+    }
+  }
+}
+
+.activities {
+  .container-grid {
+    grid-auto-rows: minmax(150px, auto);
+  }
+}
+
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
   font-family: "Poppins", sans-serif;
   font-style: Medium;
   font-size: 26px;

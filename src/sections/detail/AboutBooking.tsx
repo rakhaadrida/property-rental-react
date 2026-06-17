@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Button from "../../components/button/Button";
+import NumberInput from "../../components/form/number/NumberInput";
 
 interface Feature {
   _id: string;
@@ -31,36 +33,33 @@ const AboutBooking = ({
   price,
   unit,
 }: AboutBookingProps) => {
-  const [nights, setNights] = useState(2);
+  const [nights, setNights] = useState<number>(2);
   const total = price * nights;
 
-  const decrease = () => setNights((n) => Math.max(1, n - 1));
-  const increase = () => setNights((n) => Math.min(30, n + 1));
-
   return (
-    <section className="tw:mx-auto tw:mt-16 tw:max-w-6xl tw:px-6">
-      <div className="tw:grid tw:grid-cols-1 tw:gap-12 tw:lg:grid-cols-[1.6fr_1fr]">
-        {/* About the place */}
-        <div>
-          <h2 className="tw:text-xl tw:font-semibold tw:text-ink">
+    <section className="container about-booking">
+      <div className="row">
+        <div className="col about-section">
+          <h4 className="font-weight-medium text-gray-900 mb-4">
             About the place
-          </h2>
+          </h4>
           <div
-            className="tw:mt-5 tw:space-y-5 tw:text-[15px] tw:leading-relaxed tw:text-body"
+            className="about-description text-gray-500 font-weight-light"
             dangerouslySetInnerHTML={{ __html: description }}
           />
 
-          <div className="tw:mt-10 tw:grid tw:grid-cols-2 tw:gap-x-6 tw:gap-y-8 tw:sm:grid-cols-4">
+          <div className="feature-grid">
             {features.map((feature, index) => (
-              <div key={`${feature.name}-${index}`}>
+              <div className="feature-item" key={`${feature.name}-${index}`}>
                 <img
                   src={featureIcon[feature.name] ?? "/assets/icons/icon_tv.svg"}
                   alt=""
                   aria-hidden="true"
-                  className="tw:h-9 tw:w-9"
+                  width={36}
+                  height={36}
                 />
-                <p className="tw:mt-3 tw:text-sm tw:text-body">
-                  <span className="tw:font-semibold tw:text-ink">
+                <p className="feature-label text-gray-500 font-weight-light mt-2 mb-0">
+                  <span className="text-gray-900 font-weight-medium">
                     {feature.qty}
                   </span>{" "}
                   {feature.name}
@@ -70,49 +69,36 @@ const AboutBooking = ({
           </div>
         </div>
 
-        {/* Booking card */}
-        <div className="tw:h-fit tw:rounded-2xl tw:border tw:border-line tw:p-8 tw:shadow-[0_10px_40px_rgba(21,44,91,0.08)]">
-          <h3 className="tw:text-lg tw:font-semibold tw:text-ink">
-            Start Booking
-          </h3>
-          <p className="tw:mt-5 tw:text-3xl tw:font-semibold tw:text-success">
-            ${price}{" "}
-            <span className="tw:font-light tw:text-muted">per night</span>
-          </p>
+        <div className="col-auto booking-section">
+          <div className="card booking-card">
+            <h5 className="font-weight-medium text-gray-900 mb-4">
+              Start Booking
+            </h5>
+            <h3 className="booking-price font-weight-medium mb-4">
+              ${price}{" "}
+              <span className="text-gray-500 font-weight-light">
+                per {unit}
+              </span>
+            </h3>
 
-          <div className="tw:mt-6">
-            <label className="tw:text-sm tw:font-medium tw:text-ink">
+            <p className="font-weight-medium text-gray-900 mb-2">
               How long you will stay?
-            </label>
-            <div className="tw:mt-2 tw:flex tw:items-stretch tw:overflow-hidden tw:rounded-md tw:border tw:border-line">
-              <button
-                type="button"
-                onClick={decrease}
-                aria-label="Decrease nights"
-                className="tw:flex tw:w-12 tw:items-center tw:justify-center tw:bg-pink tw:text-xl tw:font-semibold tw:text-white"
-              >
-                &minus;
-              </button>
-              <div className="tw:flex tw:flex-1 tw:items-center tw:justify-center tw:text-sm tw:text-ink">
-                {nights} {nights > 1 ? "nights" : "night"}
-              </div>
-              <button
-                type="button"
-                onClick={increase}
-                aria-label="Increase nights"
-                className="tw:flex tw:w-12 tw:items-center tw:justify-center tw:bg-success tw:text-xl tw:font-semibold tw:text-white"
-              >
-                +
-              </button>
-            </div>
-          </div>
+            </p>
+            <NumberInput
+              name="nights"
+              value={nights}
+              max={30}
+              min={1}
+              suffix=" night"
+              isSuffixPlural
+              onChange={(e) => setNights(e.target.value)}
+            />
 
-          <div className="tw:mt-6">
-            <label className="tw:text-sm tw:font-medium tw:text-ink">
+            <p className="font-weight-medium text-gray-900 mb-2 mt-3">
               Pick a Date
-            </label>
-            <div className="tw:mt-2 tw:flex tw:items-center tw:gap-3 tw:rounded-md tw:border tw:border-line tw:p-2">
-              <span className="tw:flex tw:h-9 tw:w-9 tw:items-center tw:justify-center tw:rounded tw:bg-brand tw:text-white">
+            </p>
+            <div className="pick-date mb-3">
+              <span className="pick-date-icon">
                 <svg
                   width="16"
                   height="16"
@@ -130,25 +116,30 @@ const AboutBooking = ({
                   <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
               </span>
-              <span className="tw:text-sm tw:text-ink">20 Jan - 22 Jan</span>
+              <span className="text-gray-900">20 Jan - 22 Jan</span>
             </div>
+
+            <p className="text-gray-500 font-weight-light booking-total">
+              You will pay{" "}
+              <span className="text-gray-900 font-weight-medium">
+                ${total} USD
+              </span>{" "}
+              per{" "}
+              <span className="text-gray-900 font-weight-medium">
+                {nights} {nights > 1 ? "nights" : "night"}
+              </span>
+            </p>
+
+            <Button
+              type="button"
+              href=""
+              isPrimary
+              isBlock
+              className="btn booking-button"
+            >
+              Continue to Book
+            </Button>
           </div>
-
-          <p className="tw:mt-5 tw:text-sm tw:text-body">
-            You will pay{" "}
-            <span className="tw:font-semibold tw:text-ink">${total} USD</span>{" "}
-            per{" "}
-            <span className="tw:font-semibold tw:text-ink">
-              {nights} {nights > 1 ? "nights" : "night"}
-            </span>
-          </p>
-
-          <button
-            type="button"
-            className="tw:mt-6 tw:w-full tw:rounded-md tw:bg-brand tw:py-3 tw:text-sm tw:font-medium tw:text-white tw:transition-colors tw:hover:bg-brand-dark"
-          >
-            Continue to Book
-          </button>
         </div>
       </div>
     </section>
