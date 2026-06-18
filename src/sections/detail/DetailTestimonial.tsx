@@ -27,40 +27,33 @@ const DetailTestimonial = ({ data }: TestimonialProps) => {
   const rounded = Math.round(data.rate);
 
   return (
-    <section className="tw:mx-auto tw:mt-24 tw:max-w-6xl tw:px-6">
-      <div className="tw:grid tw:grid-cols-1 tw:items-center tw:gap-12 tw:lg:grid-cols-2">
-        <div className="tw:flex tw:justify-center">
-          <div className="tw:relative tw:w-full tw:max-w-sm">
-            <div className="tw:absolute tw:-left-4 tw:-top-6 tw:h-[92%] tw:w-[92%] tw:rounded-2xl tw:border tw:border-line tw:bg-white" />
-            <figure className="tw:relative tw:overflow-hidden tw:rounded-bl-[80px] tw:rounded-tr-2xl">
+    <section className="container detail-testimonial">
+      <div className="detail-testimonial-layout">
+        <div className="detail-testimonial-media">
+          <div className="detail-testimonial-frame">
+            <div className="detail-testimonial-frame-border" />
+            <figure className="detail-testimonial-image">
               <img
                 src={data.imageUrl}
                 alt={data.name}
-                className="tw:h-[440px] tw:w-full tw:object-cover"
+                className="img-cover"
               />
             </figure>
           </div>
         </div>
 
         <div>
-          <h3 className="tw:text-xl tw:font-semibold tw:text-ink">
-            {data.name}
-          </h3>
-          <div className="tw:mt-4 tw:flex tw:gap-1">
+          <h3 className="detail-testimonial-name">{data.name}</h3>
+          <div className="detail-testimonial-stars">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} filled={i < rounded} />
             ))}
           </div>
-          <p className="tw:mt-5 tw:text-3xl tw:font-medium tw:leading-snug tw:text-ink tw:text-balance">
-            {data.content}
-          </p>
-          <p className="tw:mt-5 tw:text-sm tw:text-muted">
+          <p className="detail-testimonial-quote">{data.content}</p>
+          <p className="detail-testimonial-author">
             {data.familyName}, {data.familyOccupation}
           </p>
-          <button
-            type="button"
-            className="tw:mt-8 tw:rounded-md tw:bg-brand tw:px-6 tw:py-3 tw:text-sm tw:font-medium tw:text-white tw:transition-colors tw:hover:bg-brand-dark"
-          >
+          <button type="button" className="detail-testimonial-button">
             Read Their Story
           </button>
         </div>

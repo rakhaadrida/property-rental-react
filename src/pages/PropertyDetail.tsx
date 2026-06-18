@@ -1,10 +1,9 @@
-import "./property-detail.css";
-import DetailNavbar from "../sections/detail/DetailNavbar";
 import DetailHeader from "../sections/detail/DetailHeader";
 import AboutBooking from "../sections/detail/AboutBooking";
 import Activities from "../sections/detail/Activities";
 import DetailTestimonial from "../sections/detail/DetailTestimonial";
-import DetailFooter from "../sections/detail/DetailFooter";
+import Navbar from "../components/navbar/Navbar";
+import Footer from "../components/footer/Footer";
 
 const property = {
   name: "Village Angga",
@@ -60,7 +59,8 @@ const property = {
     imageUrl: "/assets/images/details-page/testimonial.jpg",
     name: "Happy Family",
     rate: 5,
-    content: "As a wife I can pick a great trip with my own lovely family ... thank you!",
+    content:
+      "As a wife I can pick a great trip with my own lovely family ... thank you!",
     familyName: "Anggi",
     familyOccupation: "Product Designer",
   },
@@ -68,8 +68,8 @@ const property = {
 
 const PropertyDetail = () => {
   return (
-    <div className="detail-page tw:min-h-screen tw:bg-white tw:font-sans tw:text-ink tw:antialiased">
-      <DetailNavbar />
+    <div className="detail-page">
+      <Navbar />
       <main>
         <DetailHeader
           name={property.name}
@@ -86,7 +86,7 @@ const PropertyDetail = () => {
         <Activities data={property.activities} />
         <DetailTestimonial data={property.testimonial} />
       </main>
-      <DetailFooter />
+      <Footer />
     </div>
   );
 };

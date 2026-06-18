@@ -19,7 +19,6 @@ const Star = ({
   const limit = value - decimals;
   const star = [];
 
-  let starIndex = 0;
   let leftPos = 0;
   for (let index = 0; index < 5 && index < limit; index++) {
     leftPos = leftPos + width;
@@ -36,8 +35,6 @@ const Star = ({
         }}
       ></div>,
     );
-
-    starIndex = index;
   }
 
   if (decimals > 0 && value <= 5) {

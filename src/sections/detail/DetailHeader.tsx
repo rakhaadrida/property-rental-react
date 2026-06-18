@@ -11,48 +11,43 @@ const DetailHeader = ({ name, city, country, images }: GalleryProps) => {
   const [main, secondTop, secondBottom] = images;
 
   return (
-    <section className="tw:mx-auto tw:max-w-6xl tw:px-6 tw:pt-10">
-      <div className="tw:relative tw:flex tw:flex-col tw:items-center tw:gap-4 tw:sm:flex-row tw:sm:justify-between">
-        <nav
-          aria-label="Breadcrumb"
-          className="tw:flex tw:items-center tw:gap-2 tw:text-sm tw:font-medium"
-        >
-          <Link to="/" className="tw:text-muted tw:no-underline">
-            Home
-          </Link>
-          <span className="tw:text-muted">/</span>
-          <span className="tw:text-ink">House Details</span>
+    <section className="container detail-header">
+      <div className="detail-header-top">
+        <nav aria-label="Breadcrumb" className="detail-header-breadcrumb">
+          <Link to="/">Home</Link>
+          <span>/</span>
+          <span>House Details</span>
         </nav>
-        <div className="tw:text-center tw:sm:absolute tw:sm:left-1/2 tw:sm:-translate-x-1/2">
-          <h1 className="tw:text-3xl tw:font-bold tw:text-ink">{name}</h1>
-          <p className="tw:mt-1 tw:text-sm tw:text-muted">
+        <div className="detail-header-title-block">
+          <h1 className="detail-header-title">{name}</h1>
+          <p className="detail-header-location">
             {city}, {country}
           </p>
         </div>
-        <span className="tw:hidden tw:sm:block" aria-hidden="true" />
+        <span className="detail-header-spacer" aria-hidden="true" />
       </div>
 
-      <div className="tw:mt-8 tw:grid tw:grid-cols-1 tw:gap-5 tw:md:grid-cols-2">
-        <figure className="tw:h-72 tw:overflow-hidden tw:rounded-2xl tw:md:h-[460px]">
+      <div className="detail-header-gallery row">
+        <figure className="detail-header-main-image col-lg-7 col-md-12">
           <img
             src={main}
             alt={`${name} exterior`}
-            className="tw:h-full tw:w-full tw:object-cover"
+            className="img-cover detail-header-main-image-hero"
           />
         </figure>
-        <div className="tw:grid tw:grid-rows-2 tw:gap-5">
-          <figure className="tw:h-44 tw:overflow-hidden tw:rounded-2xl tw:md:h-auto">
+        <div className="detail-header-side-images col-lg-5 col-md-12">
+          <figure className="detail-header-side-image">
             <img
               src={secondTop}
               alt={`${name} living room`}
-              className="tw:h-full tw:w-full tw:object-cover"
+              className="img-cover"
             />
           </figure>
-          <figure className="tw:h-44 tw:overflow-hidden tw:rounded-2xl tw:md:h-auto">
+          <figure className="detail-header-side-image">
             <img
               src={secondBottom}
               alt={`${name} bedroom`}
-              className="tw:h-full tw:w-full tw:object-cover"
+              className="img-cover"
             />
           </figure>
         </div>
