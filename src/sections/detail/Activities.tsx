@@ -23,11 +23,7 @@ const Activities = ({ data }: ActivitiesProps) => {
                   Popular <span>Choice</span>
                 </span>
               )}
-              <img
-                src={item.imageUrl}
-                alt={item.name}
-                className="img-cover"
-              />
+              <img src={item.imageUrl} alt={item.name} className="img-cover" />
             </figure>
             <h3 className="detail-activities-name">{item.name}</h3>
             <p className="detail-activities-type">{item.type}</p>

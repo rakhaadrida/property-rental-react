@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../../components/button/Button";
 
 interface Feature {
   _id: string;
@@ -39,8 +40,8 @@ const AboutBooking = ({
 
   return (
     <section className="container about-booking">
-      <div className="about-booking-layout">
-        <div>
+      <div className="about-booking-layout row">
+        <div className="col-lg-7">
           <h2 className="about-booking-heading">About the place</h2>
           <div
             className="about-booking-description"
@@ -49,7 +50,7 @@ const AboutBooking = ({
 
           <div className="about-booking-features">
             {features.map((feature, index) => (
-              <div key={`${feature.name}-${index}`}>
+              <div key={`${feature.name}-${index}`} className="">
                 <img
                   src={featureIcon[feature.name] ?? "/assets/icons/icon_tv.svg"}
                   alt=""
@@ -58,14 +59,16 @@ const AboutBooking = ({
                 />
                 <p className="about-booking-feature-text">
                   <span className="font-weight-bold">{feature.qty}</span>{" "}
-                  {feature.name}
+                  <span className="about-booking-feature-text-name">
+                    {feature.name}
+                  </span>
                 </p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="about-booking-card">
+        <div className="about-booking-card col-lg-5">
           <h3 className="about-booking-card-title">Start Booking</h3>
           <p className="about-booking-price">
             ${price}{" "}
@@ -104,9 +107,9 @@ const AboutBooking = ({
             <div className="about-booking-date-picker">
               <span className="about-booking-date-icon">
                 <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  viewBox="0 1 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -126,15 +129,21 @@ const AboutBooking = ({
 
           <p className="about-booking-summary">
             You will pay{" "}
-            <span className="font-weight-bold">${total} USD</span> per{" "}
-            <span className="font-weight-bold">
+            <span className="about-booking-summary-total">${total} USD</span>{" "}
+            per{" "}
+            <span className="about-booking-summary-total">
               {nights} {nights > 1 ? "nights" : "night"}
             </span>
           </p>
 
-          <button type="button" className="about-booking-submit">
+          <Button
+            className="btn px-5 about-booking-submit"
+            hasShadow
+            isPrimary
+            href=""
+          >
             Continue to Book
-          </button>
+          </Button>
         </div>
       </div>
     </section>
