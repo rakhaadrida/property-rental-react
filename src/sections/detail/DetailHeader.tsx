@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 
 interface GalleryProps {
   name: string;
@@ -13,11 +13,9 @@ const DetailHeader = ({ name, city, country, images }: GalleryProps) => {
   return (
     <section className="container detail-header">
       <div className="detail-header-top">
-        <nav aria-label="Breadcrumb" className="detail-header-breadcrumb">
-          <Link to="/">Home</Link>
-          <span>/</span>
-          <span>House Details</span>
-        </nav>
+        <Breadcrumb
+          items={[{ label: "Home", to: "/" }, { label: "House Details" }]}
+        />
         <div className="detail-header-title-block">
           <h1 className="detail-header-title">{name}</h1>
           <p className="detail-header-location">

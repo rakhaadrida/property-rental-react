@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { DayPicker, type DateRange } from "react-day-picker";
+import { format, addDays } from "date-fns";
+import "react-day-picker/dist/style.css";
 import Button from "../../components/button/Button";
 
 interface Feature {
@@ -33,10 +36,34 @@ const AboutBooking = ({
   unit,
 }: AboutBookingProps) => {
   const [nights, setNights] = useState(2);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [selectedRange, setSelectedRange] = useState<DateRange>({
+    from: new Date(),
+    to: addDays(new Date(), 2),
+  });
   const total = price * nights;
 
   const decrease = () => setNights((n) => Math.max(1, n - 1));
   const increase = () => setNights((n) => Math.min(30, n + 1));
+
+  const handleDateSelect = (range: DateRange | undefined) => {
+    if (range) {
+      setSelectedRange(range);
+      if (range.from && range.to) {
+        const nightsDiff = Math.ceil(
+          (range.to.getTime() - range.from.getTime()) / (1000 * 60 * 60 * 24),
+        );
+        setNights(Math.max(1, nightsDiff));
+      }
+    }
+  };
+
+  const formatDateRange = () => {
+    if (selectedRange.from && selectedRange.to) {
+      return `${format(selectedRange.from, "dd MMM")} - ${format(selectedRange.to, "dd MMM")}`;
+    }
+    return "Select dates";
+  };
 
   return (
     <section className="container about-booking">
@@ -102,9 +129,15 @@ const AboutBooking = ({
             </div>
           </div>
 
-          <div className="about-booking-field">
+          <div className="about-booking-field-date">
             <label className="about-booking-label">Pick a Date</label>
-            <div className="about-booking-date-picker">
+            <button
+              type="button"
+              className="about-booking-date-picker"
+              onClick={() => setShowDatePicker(!showDatePicker)}
+              aria-expanded={showDatePicker}
+              aria-label="Open date picker"
+            >
               <span className="about-booking-date-icon">
                 <svg
                   width="24"
@@ -123,8 +156,29 @@ const AboutBooking = ({
                   <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
               </span>
-              <span className="about-booking-date-value">20 Jan - 22 Jan</span>
-            </div>
+              <span className="about-booking-date-value">
+                {formatDateRange()}
+              </span>
+            </button>
+            {showDatePicker && (
+              <div className="about-booking-date-picker-modal">
+                <DayPicker
+                  mode="range"
+                  selected={selectedRange}
+                  onSelect={handleDateSelect}
+                  disabled={(date: Date) => date < new Date()}
+                  showOutsideDays={false}
+                  className="about-booking-day-picker"
+                />
+                <button
+                  type="button"
+                  className="btn btn-sm about-booking-date-picker-close"
+                  onClick={() => setShowDatePicker(false)}
+                >
+                  Done
+                </button>
+              </div>
+            )}
           </div>
 
           <p className="about-booking-summary">

@@ -301,14 +301,43 @@ $detail-booking-shadow: 0 10px 40px rgba(21, 44, 91, 0.08);
     background-color: $gray-400;
   }
 
+  &-field-date {
+    margin-top: 1.5rem;
+    margin-right: -50px;
+
+    @include media-breakpoint-down(xl) {
+      margin-right: -120px;
+    }
+
+    @include media-breakpoint-down(lg) {
+      margin-right: 0;
+    }
+  }
+
   &-date-picker {
     margin-top: 0.5rem;
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
     border-radius: 0.375rem;
     border: 1px solid $detail-line-color;
     background-color: $gray-400;
+    cursor: pointer;
+    transition: border-color 0.15s ease-in-out;
+    width: 86%;
+    padding: 0;
+
+    &:hover {
+      border-color: $detail-brand-dark;
+    }
+
+    @include media-breakpoint-down(xl) {
+      width: 66%;
+    }
+
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+    }
   }
 
   &-date-icon {
@@ -330,6 +359,104 @@ $detail-booking-shadow: 0 10px 40px rgba(21, 44, 91, 0.08);
     font-size: 1rem;
     color: $gray-900;
     padding-right: 45px;
+
+    @include media-breakpoint-down(xl) {
+      padding-right: 0;
+    }
+  }
+
+  &-date-picker-modal {
+    z-index: 1000;
+    background-color: $white;
+    border: 1px solid $detail-line-color;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: min(100%, 350px);
+    max-width: 100%;
+    box-sizing: border-box;
+
+    @include media-breakpoint-down(xl) {
+      padding: 1rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+  }
+
+  &-day-picker {
+    --rdp-cell-size: 40px;
+    --rdp-accent-color: $detail-success-color;
+    --rdp-background-color: rgba(26, 188, 156, 0.1);
+    width: 100%;
+
+    .rdp-months {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .rdp-month {
+      margin: 0;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .rdp-head_cell {
+      font-weight: 500;
+      color: $gray-900;
+      font-size: 0.875rem;
+    }
+
+    .rdp-cell {
+      padding: 0;
+    }
+
+    .rdp-day {
+      border-radius: 0.25rem;
+      font-weight: 400;
+
+      &:hover:not(.rdp-day_disabled) {
+        background-color: rgba(26, 188, 156, 0.2);
+      }
+    }
+
+    .rdp-day_selected {
+      background-color: $detail-success-color;
+      color: $white;
+      font-weight: 500;
+    }
+
+    .rdp-day_range_middle {
+      background-color: rgba(26, 188, 156, 0.1);
+      color: $gray-900;
+      border-radius: 0;
+    }
+
+    .rdp-day_disabled {
+      color: $gray-400;
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &-date-picker-close {
+    align-self: flex-end;
+    background-color: $detail-success-color;
+    color: $white;
+    border: 0;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover {
+      background-color: darken($detail-success-color, 10%);
+    }
   }
 
   &-summary {
