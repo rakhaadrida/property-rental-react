@@ -1,4 +1,5 @@
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
+import { Fade } from "react-awesome-reveal";
 
 interface GalleryProps {
   name: string;
@@ -25,31 +26,33 @@ const DetailHeader = ({ name, city, country, images }: GalleryProps) => {
         <span className="detail-header-spacer" aria-hidden="true" />
       </div>
 
-      <div className="detail-header-gallery row">
-        <figure className="detail-header-main-image col-lg-7 col-md-12">
-          <img
-            src={main}
-            alt={`${name} exterior`}
-            className="img-cover detail-header-main-image-hero"
-          />
-        </figure>
-        <div className="detail-header-side-images col-lg-5 col-md-12">
-          <figure className="detail-header-side-image">
+      <Fade direction="up" triggerOnce>
+        <div className="detail-header-gallery row">
+          <figure className="detail-header-main-image col-lg-7 col-md-12">
             <img
-              src={secondTop}
-              alt={`${name} living room`}
-              className="img-cover"
+              src={main}
+              alt={`${name} exterior`}
+              className="img-cover detail-header-main-image-hero"
             />
           </figure>
-          <figure className="detail-header-side-image">
-            <img
-              src={secondBottom}
-              alt={`${name} bedroom`}
-              className="img-cover"
-            />
-          </figure>
+          <div className="detail-header-side-images col-lg-5 col-md-12">
+            <figure className="detail-header-side-image">
+              <img
+                src={secondTop}
+                alt={`${name} living room`}
+                className="img-cover"
+              />
+            </figure>
+            <figure className="detail-header-side-image">
+              <img
+                src={secondBottom}
+                alt={`${name} bedroom`}
+                className="img-cover"
+              />
+            </figure>
+          </div>
         </div>
-      </div>
+      </Fade>
     </section>
   );
 };
