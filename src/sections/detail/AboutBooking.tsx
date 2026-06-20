@@ -37,14 +37,40 @@ const AboutBooking = ({
 }: AboutBookingProps) => {
   const [nights, setNights] = useState(2);
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const [selectedRange, setSelectedRange] = useState<DateRange>({
-    from: new Date(),
-    to: addDays(new Date(), 2),
+  const [selectedRange, setSelectedRange] = useState<DateRange>(() => {
+    const today = new Date();
+    return {
+      from: today,
+      to: addDays(today, 2),
+    };
   });
   const total = price * nights;
 
-  const decrease = () => setNights((n) => Math.max(1, n - 1));
-  const increase = () => setNights((n) => Math.min(30, n + 1));
+  const updateRangeFromNights = (newNights: number) => {
+    setSelectedRange((currentRange) => {
+      const fromDate = currentRange.from ?? new Date();
+      return {
+        from: fromDate,
+        to: addDays(fromDate, newNights),
+      };
+    });
+  };
+
+  const decrease = () => {
+    setNights((n) => {
+      const next = Math.max(1, n - 1);
+      updateRangeFromNights(next);
+      return next;
+    });
+  };
+
+  const increase = () => {
+    setNights((n) => {
+      const next = Math.min(30, n + 1);
+      updateRangeFromNights(next);
+      return next;
+    });
+  };
 
   const handleDateSelect = (range: DateRange | undefined) => {
     if (range) {
