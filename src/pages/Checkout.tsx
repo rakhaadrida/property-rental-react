@@ -120,7 +120,7 @@ const Checkout = () => {
                   data.phone !== "" && (
                     <Fade>
                       <Button
-                        className="btn mb-3"
+                        className="btn checkout-booking-info-button mb-3"
                         type="button"
                         isBlock
                         isPrimary
@@ -133,12 +133,11 @@ const Checkout = () => {
                     </Fade>
                   )}
                 <Button
-                  className="btn"
+                  className="btn checkout-booking-info-button"
                   type="link"
                   isBlock
                   isLight
                   href={`/properties/${ItemDetails._id}`}
-                  style={{ width: 300, height: 50, paddingTop: 12 }}
                 >
                   Cancel
                 </Button>
@@ -152,7 +151,7 @@ const Checkout = () => {
                   data.bankHolder !== "" && (
                     <Fade>
                       <Button
-                        className="btn mb-3"
+                        className="btn checkout-booking-info-button mb-3"
                         type="button"
                         isBlock
                         isPrimary
@@ -165,7 +164,7 @@ const Checkout = () => {
                     </Fade>
                   )}
                 <Button
-                  className="btn"
+                  className="btn checkout-booking-info-button"
                   type="button"
                   isBlock
                   isLight
@@ -180,7 +179,7 @@ const Checkout = () => {
             {currentStep === "completed" && (
               <Controller>
                 <Button
-                  className="btn"
+                  className="btn checkout-booking-info-button"
                   type="link"
                   isBlock
                   isPrimary

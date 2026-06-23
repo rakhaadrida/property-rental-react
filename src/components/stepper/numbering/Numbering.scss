@@ -35,8 +35,10 @@ ol.stepper {
       transform: scale(1);
       transition: 0.35s transform ease-in-out;
     }
+
     &:not(:last-child) {
       margin-right: 60px;
+
       &:before {
         content: "";
         z-index: -2;
@@ -56,12 +58,14 @@ ol.stepper {
         border: 1px solid $stepperMainColor;
         transform: scale(1.2);
       }
+
       background-color: $stepperMainColor;
       color: $gray-500;
 
       & ~ li {
         color: $gray-500;
         background: $stepperMainColor;
+
         &:after {
           content: none;
         }

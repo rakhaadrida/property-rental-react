@@ -1,13 +1,19 @@
 import { useState } from "react";
 
 interface StepperProps {
-  steps: Record<string, { title: string; description: string | null; content: React.ReactNode }>;
+  steps: Record<
+    string,
+    { title: string; description: string | null; content: React.ReactNode }
+  >;
   initialStep?: string;
   children: (props: {
     previousStep: () => void;
     nextStep: () => void;
     currentStep: string;
-    steps: Record<string, { title: string; description: string | null; content: React.ReactNode }>;
+    steps: Record<
+      string,
+      { title: string; description: string | null; content: React.ReactNode }
+    >;
   }) => React.ReactNode;
 }
 

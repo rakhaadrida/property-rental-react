@@ -20,10 +20,15 @@ const Numbering = ({
     <Fade>
       <ol className={["stepper", className].join(" ")} style={style}>
         {keysOfData.map((key, index) => {
-          const isActive = key === current ? "active" : "";
+          let isActive = key === current ? "active" : "";
+
+          if (index + 1 === keysOfData.length) {
+            isActive = "";
+            return null;
+          }
 
           return (
-            <li key={`step-${index}`} className={isActive}>
+            <li key={`step-${index}`} className={[isActive].join(" ")}>
               {index + 1}
             </li>
           );
