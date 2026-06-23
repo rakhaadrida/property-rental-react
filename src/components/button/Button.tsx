@@ -14,6 +14,7 @@ interface ButtonProps {
   isSmall?: boolean;
   isLarge?: boolean;
   isBlock?: boolean;
+  isLight?: boolean;
   isExternal?: boolean;
   hasShadow?: boolean;
 }
@@ -24,6 +25,7 @@ const Button = (props: ButtonProps) => {
   if (props.isLarge) className.push("btn-lg");
   if (props.isSmall) className.push("btn-sm");
   if (props.isBlock) className.push("btn-block");
+  if (props.isLight) className.push("btn-light");
   if (props.hasShadow) className.push("btn-shadow");
 
   const onClick = () => {
